@@ -43,22 +43,22 @@ To use ananicy you must have systemd installed.
 
 You can install ananicy manually by:
 ```
-$ git clone https://github.com/Nefelim4ag/Ananicy.git /tmp/ananicy
-$ cd /tmp/ananicy
-$ sudo make install
+git clone https://github.com/Nefelim4ag/Ananicy.git /tmp/ananicy
+cd /tmp/ananicy
+sudo make install
 ```
 * ![logo](http://www.monitorix.org/imgs/archlinux.png "arch logo") Arch: [AUR/ananicy-git](https://aur.archlinux.org/packages/ananicy-git).
 * Debian/Ubuntu: use [package.sh](https://raw.githubusercontent.com/Nefelim4ag/Ananicy/master/package.sh) in repo
 ```
-$ git clone https://github.com/Nefelim4ag/Ananicy.git
-$ ./Ananicy/package.sh debian
-$ sudo dpkg -i ./Ananicy/ananicy-*.deb
+git clone https://github.com/Nefelim4ag/Ananicy.git
+./Ananicy/package.sh debian
+sudo dpkg -i ./Ananicy/ananicy-*.deb
 ```
 
 Enable
 ```
-$ sudo systemctl enable ananicy
-$ sudo systemctl start ananicy
+sudo systemctl enable ananicy
+sudo systemctl start ananicy
 ```
 ## Configuration
 Rules files should be placed under `/etc/ananicy.d/` directory and have `*.rules` extension.
@@ -87,7 +87,7 @@ Ananicy loads all rules in ram while starting, so to apply rules, you must resta
 
 Available ionice values:
 ```
-$ man ionice
+man ionice
 ```
 
 ## Simple rules for writing rules
@@ -108,7 +108,7 @@ About IO priority:
 ## Debugging
 Get ananicy output with journalctl:
 ```
-$ journalctl -efu ananicy.service
+journalctl -efu ananicy.service
 ```
 
 ### Missing `schedtool`
