@@ -624,8 +624,8 @@ class Ananicy:
             cgroup = None
 
         # might be best not to do this so that rules can be overwritten by the user
-        #if name in self.rules:
-        #    raise Failure(f'Duplicate name "{name}": ')
+        # if name in self.rules:
+        # raise Failure(f'Duplicate name "{name}": ')
 
         cmdlines = line.get("cmdlines")
         if cmdlines:
