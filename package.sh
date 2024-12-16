@@ -1,11 +1,12 @@
-#!/bin/bash -e
-################################################################################
-# echo wrappers
-INFO(){ echo "INFO: $*";}
-WARN(){ echo "WARN: $*";}
-ERRO(){ echo "ERRO: $*"; exit 1;}
+#!/bin/bash
 
-debian_package(){
+set -euxo pipefail
+
+function INFO(){ echo "INFO: $*";}
+function WARN(){ echo "WARN: $*";}
+function ERRO(){ echo "ERRO: $*"; exit 1;}
+
+function debian_package(){
     cd "$(dirname "$0")"
     VERSION=$(git tag --sort version:refname | tail -n 1)
     [ -z "$VERSION" ] && ERRO "Can't get git tag, VERSION are empty!"
@@ -32,6 +33,7 @@ debian_package(){
 
     POSTINST="${DEB_NAME}/DEBIAN/postinst"
     touch "${POSTINST}" && chmod +x "${POSTINST}"
+    
     {
         echo "#!/bin/sh"
         echo "chown -R root:root /etc/ananicy.d"
@@ -41,7 +43,7 @@ debian_package(){
     dpkg-deb --build "${DEB_NAME}"
 }
 
-archlinux_package(){
+function archlinux_package(){
     INFO "Use yaourt -S ananicy-git"
 }
 
