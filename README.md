@@ -1,16 +1,3 @@
-# Ananicy
-
-## Description
-Ananicy (ANother Auto NICe daemon) — is a shell daemon created to manage processes' [IO](http://linux.die.net/man/1/ionice) and [CPU](http://linux.die.net/man/1/nice) priorities, with community-driven set of rules for popular applications (anyone may add their own rule via github's [pull request](https://help.github.com/articles/using-pull-requests/) mechanism). It's mainly for desktop usage.
-
-I just wanted a tool for auto set programs nice in my system, i.e.:
-* Why do I get lag, while compiling kernel and playing games?
-* Why does dropbox client eat all my IO?
-* Why does torrent/dc client make my laptop run slower?
-* ...
-
-Use ananicy to fix these problems!
-
 ## Installation
 
 You can install ananicy manually by:
@@ -18,20 +5,17 @@ You can install ananicy manually by:
 git clone https://github.com/c0d3h01/ananicy.git /tmp/ananicy
 cd /tmp/ananicy
 sudo make install
+sudo systemctl enable --now ananicy
 ```
-* ![logo](http://www.monitorix.org/imgs/archlinux.png "arch logo") Arch: [AUR/ananicy-git](https://aur.archlinux.org/packages/ananicy-git).
-* Debian/Ubuntu: use [package.sh](https://raw.githubusercontent.com/Nefelim4ag/Ananicy/master/package.sh) in repo
+
+**Debian/Ubuntu:**
 ```
 git clone https://github.com/c0d3h01/ananicy.git
 ./ananicy/package.sh debian
 sudo dpkg -i ./ananicy/ananicy-*.deb
+sudo systemctl enable --now ananicy
 ```
 
-Enable
-```
-sudo systemctl enable ananicy
-sudo systemctl start ananicy
-```
 ## Configuration
 Rules files should be placed under `/etc/ananicy.d/` directory and have `*.rules` extension.
 Inside .rules file every process is described on a separate line. General syntax is described below:
